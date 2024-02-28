@@ -1,0 +1,7 @@
+.footer {
+  display: grid;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  font-family: "Courier New", Courier, monospace;
+}

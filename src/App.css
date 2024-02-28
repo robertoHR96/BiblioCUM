@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .App-logo {
@@ -35,4 +37,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.centrador{
+  display: grid;
+  place-content: center;
 }

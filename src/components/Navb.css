@@ -1,0 +1,47 @@
+.nav-flot {
+  background-color: rgba(255, 255, 255, 0.893);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.259);
+}
+.logo-nav {
+  font-size: 1.1em;
+  font-weight: bold;
+  font-family: "Roboto", "Courier New", Courier, sans-serif;
+  font-family: "Courier New", Courier, monospace;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-content: center;
+  grid-template-rows: auto;
+}
+.logo-nav * {
+  margin: 0px;
+}
+.logo-nav > .p1 {
+  background-color: #00843d;
+  color: white;
+  padding: 0px 2px 0px 6px;
+  border-radius: 5px 0px 0px 5px;
+}
+.logo-nav > .p2 {
+  padding: 0px 1px 0px 1px;
+  background-color: white;
+}
+.logo-nav > .p3 {
+  color: white;
+  background-color: black;
+  padding: 0px 6px 0px 2px;
+  border-radius: 0px 5px 5px 0px;
+}
+.button-navbar{
+  font-size: 1.2em;
+  font-family: "Courier New", Courier, monospace;
+  margin-left: 20px;
+  color:#5b5b5b;
+  cursor: pointer;
+      -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.button-navbar:hover{
+  color:rgb(0, 0, 0);
+}
