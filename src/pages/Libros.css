@@ -1,5 +1,64 @@
 .libros{
   display: grid;
-  place-content: center;
+  grid-template-columns: 1fr 4fr 1fr;
+  justify-content: center;
+  align-content: start;
   min-height: 100vh;
+  margin-top: 70px;
+
+
+  padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  .libros{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 5fr auto;
+    margin-top: 137px;
+  }
+}
+
+
+.libros-center{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  justify-content: center;
+  align-content: start;
+
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+
+
+@media only screen and (max-width: 800px) {
+  .libros-center>.card{
+      max-width: 22rem !important;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .libros-center>.card{
+      max-width: auto !important;
+  }
+}
+
+
+.libros-left{
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-content: start;
+
+  row-gap: 7px;
+  
+}
+.filtro{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  align-content: start;
+  column-gap: 10px;
 }
