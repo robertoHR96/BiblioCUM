@@ -1,134 +1,172 @@
 [
   {
+    "id": 1,
     "titulo": "El Gran Gatsby",
     "descripcion": "Una novela clásica de F. Scott Fitzgerald que explora la decadencia de la sociedad americana durante los años 20.",
     "precio": "10.99",
     "portada": "el_gran_gatsby.jpg",
-    "disponibles": 10
+    "disponibles": 10,
+    "categoria": "Ficción"
   },
   {
+    "id": 2,
     "titulo": "Cien años de soledad",
     "descripcion": "Una obra maestra del realismo mágico escrita por Gabriel García Márquez, que narra la historia de la familia Buendía a lo largo de varias generaciones.",
     "precio": "12.50",
     "portada": "cien_anos_de_soledad.jpg",
-    "disponibles": 15
+    "disponibles": 15,
+    "categoria": "Ficción"
   },
   {
+    "id": 3,
     "titulo": "Don Quijote de la Mancha",
     "descripcion": "La obra cumbre de la literatura española escrita por Miguel de Cervantes Saavedra, que narra las aventuras de un hidalgo enloquecido por la lectura de libros de caballería.",
     "precio": "8.75",
     "portada": "don_quijote.jpg",
-    "disponibles": 20
+    "disponibles": 20,
+    "categoria": "Clásicos"
   },
   {
+    "id": 4,
     "titulo": "1984",
     "descripcion": "Una distopía escrita por George Orwell que presenta un futuro totalitario donde el gobierno controla todos los aspectos de la vida de las personas.",
     "precio": "9.99",
     "portada": "1984.jpg",
-    "disponibles": 5
+    "disponibles": 5,
+    "categoria": "Distopía"
   },
   {
+    "id": 5,
     "titulo": "Orgullo y prejuicio",
     "descripcion": "Una novela clásica de Jane Austen que sigue la vida de la familia Bennet en el siglo XIX y examina las convenciones sociales de la época.",
     "precio": "11.25",
     "portada": "orgullo_y_prejuicio.jpg",
-    "disponibles": 8
+    "disponibles": 8,
+    "categoria": "Clásicos"
   },
   {
+    "id": 6,
     "titulo": "Moby Dick",
     "descripcion": "Una novela épica de Herman Melville que narra la obsesiva búsqueda del capitán Ahab por vengarse de la ballena blanca que le arrancó una pierna.",
     "precio": "14.99",
     "portada": "moby_dick.jpg",
-    "disponibles": 12
+    "disponibles": 12,
+    "categoria": "Aventura"
   },
   {
+    "id": 7,
     "titulo": "Los miserables",
     "descripcion": "Una novela clásica de Victor Hugo que sigue las vidas de varios personajes durante la Francia del siglo XIX, incluido el exconvicto Jean Valjean.",
     "precio": "13.50",
     "portada": "los_miserables.jpg",
-    "disponibles": 18
+    "disponibles": 18,
+    "categoria": "Historia"
   },
   {
+    "id": 8,
     "titulo": "Crimen y castigo",
     "descripcion": "Una novela de Fiódor Dostoyevski que explora las complejas motivaciones detrás de un asesinato y la moralidad humana.",
     "precio": "10.99",
     "portada": "crimen_y_castigo.jpg",
-    "disponibles": 10
+    "disponibles": 10,
+    "categoria": "Ficción"
   },
   {
+    "id": 9,
     "titulo": "Hamlet",
     "descripcion": "Una tragedia escrita por William Shakespeare que sigue al príncipe Hamlet mientras busca vengar la muerte de su padre.",
     "precio": "7.99",
     "portada": "hamlet.jpg",
-    "disponibles": 7
+    "disponibles": 7,
+    "categoria": "Ficción"
   },
   {
+    "id": 10,
     "titulo": "Ulises",
     "descripcion": "Una novela modernista de James Joyce que sigue un día en la vida de Leopold Bloom mientras deambula por Dublín.",
     "precio": "16.25",
     "portada": "ulises.jpg",
-    "disponibles": 9
+    "disponibles": 9,
+    "categoria": "Ficción"
   },
   {
+    "id": 11,
     "titulo": "Guerra y paz",
     "descripcion": "Una epopeya histórica de León Tolstói que narra las vidas de varias familias aristocráticas durante la invasión napoleónica de Rusia.",
     "precio": "18.75",
     "portada": "guerra_y_paz.jpg",
-    "disponibles": 14
+    "disponibles": 14,
+    "categoria": "Épica"
   },
   {
+    "id": 12,
     "titulo": "El señor de los anillos",
     "descripcion": "Una trilogía de fantasía escrita por J.R.R. Tolkien que sigue la búsqueda de un hobbit llamado Frodo para destruir un poderoso anillo.",
     "precio": "20.99",
     "portada": "el_senor_de_los_anillos.jpg",
-    "disponibles": 20
+    "disponibles": 20,
+    "categoria": "Fantasía"
   },
   {
+    "id": 13,
     "titulo": "Anna Karenina",
     "descripcion": "Una novela de León Tolstói que sigue las relaciones y los dilemas morales de la aristocracia rusa.",
     "precio": "11.99",
     "portada": "anna_karenina.jpg",
-    "disponibles": 11
+    "disponibles": 11,
+    "categoria": "Ficción"
   },
   {
+    "id": 14,
     "titulo": "La Odisea",
     "descripcion": "Un poema épico atribuido a Homero que narra el viaje de Odiseo de regreso a casa después de la guerra de Troya.",
     "precio": "9.25",
     "portada": "la_odisea.jpg",
-    "disponibles": 16
+    "disponibles": 16,
+    "categoria": "Épica"
   },
   {
+    "id": 15,
     "titulo": "Alicia en el país de las maravillas",
     "descripcion": "Una obra de Lewis Carroll que sigue a una niña llamada Alicia mientras cae por la madriguera de un conejo y entra en un mundo de fantasía.",
     "precio": "6.50",
     "portada": "alicia_en_el_pais_de_las_maravillas.jpg",
-    "disponibles": 20
+    "disponibles": 20,
+    "categoria": "Literatura infantil"
   },
   {
+    "id": 16,
     "titulo": "Drácula",
     "descripcion": "Una novela de terror gótico escrita por Bram Stoker que sigue al Conde Drácula mientras busca extender su influencia desde Transilvania a Inglaterra.",
     "precio": "10.50",
     "portada": "dracula.jpg",
-    "disponibles": 13
+    "disponibles": 13,
+    "categoria": "Terror"
   },
   {
+    "id": 17,
     "titulo": "Las aventuras de Sherlock Holmes",
     "descripcion": "Una colección de historias detectivescas escritas por Sir Arthur Conan Doyle que sigue al famoso detective Sherlock Holmes y su fiel compañero, el Dr. Watson.",
     "precio": "8.99",
     "portada": "las_aventuras_de_sherlock_holmes.jpg",
-    "disponibles": 19
+    "disponibles": 19,
+    "categoria": "Ficción"
   },
   {
+    "id": 18,
     "titulo": "Frankenstein",
     "descripcion": "Una novela gótica escrita por Mary Shelley que narra la historia de Víctor Frankenstein, un joven científico que crea a un ser viviente a partir de partes de cadáveres.",
     "precio": "10.75",
     "portada": "frankenstein.jpg",
-    "disponibles": 6
+    "disponibles": 6,
+    "categoria": "Ficción"
   },
   {
+    "id": 19,
     "titulo": "Orgullo y prejuicio",
     "descripcion": "Una novela clásica de Jane Austen que sigue la vida de la familia Bennet en el siglo XIX",
     "precio": "12.37",
-    "disponibles": 9
+    "disponibles": 9,
+    "categoria": "Clásicos"
   }
 ]
