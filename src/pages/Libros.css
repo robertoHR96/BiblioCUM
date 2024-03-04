@@ -1,64 +1,141 @@
-.libros{
+.libros {
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 324px 4fr 0.8fr;
   justify-content: center;
   align-content: start;
   min-height: 100vh;
   margin-top: 70px;
 
-
   padding-bottom: 20px;
+
+  column-gap: 20px;
 }
 
 @media only screen and (max-width: 800px) {
-  .libros{
+  .libros {
     grid-template-columns: 1fr;
     grid-template-rows: auto 5fr auto;
     margin-top: 137px;
   }
 }
 
-
-.libros-center{
+.libros-center {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+
+
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 
   justify-content: center;
   align-content: start;
 
   column-gap: 20px;
   row-gap: 20px;
+
+  padding: 10px 10px 10px 20px;
 }
 
-
-
 @media only screen and (max-width: 800px) {
-  .libros-center>.card{
-      max-width: 22rem !important;
+  .libros-center > .card {
+    max-width: 22rem !important;
   }
 }
 @media only screen and (max-width: 800px) {
-  .libros-center>.card{
-      max-width: auto !important;
+  .libros-center > .card {
+    max-width: auto !important;
+  }
+}
+.button-desplegar {
+  visibility: hidden;
+  display: none;
+}
+.libros-left {
+}
+.no-despl,
+.despl {
+  visibility: visible;
+  height: calc(100vh - 150px);
+}
+@media only screen and (max-width: 800px) {
+  .no-despl {
+    visibility: hidden;
+    animation: noexpand 0.5s forwards;
+  }
+  @keyframes noexpand {
+    from {
+      height: 545px; /* Altura final */
+    }
+    to {
+      height: 0px; /* Altura inicial */
+    }
+  }
+  .despl {
+    visibility: visible;
+    animation: expand 1s forwards;
+  }
+  @keyframes expand {
+    from {
+      height: 0px; /* Altura inicial */
+    }
+    to {
+      height: 545px; /* Altura final */
+    }
+  }
+
+  .button-desplegar {
+    visibility: visible;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding:10px 5px;
   }
 }
 
-
-.libros-left{
+.libros-left > div {
+  position: fixed;
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
   align-content: start;
 
   row-gap: 7px;
-  
+
+  height: calc(100vh - 150px);
+  overflow-y: scroll;
+
+  padding: 10px;
 }
-.filtro{
+@media only screen and (max-width: 800px) {
+  .libros-left > div {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    position: relative;
+    height: auto;
+  }
+}
+.filtro {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
   justify-content: center;
   align-content: start;
   column-gap: 10px;
+}
+
+.box-categorias {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: start;
+  align-content: start;
+  row-gap: 10px;
+  column-gap: 0px;
+}
+.box-categorias > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: start;
+  align-content: center;
+  column-gap: 5px;
 }

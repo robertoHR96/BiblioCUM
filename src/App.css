@@ -1,9 +1,16 @@
+*{
+
+  accent-color: #00843d;
+}
 .App {
   text-align: center;
   width: 100vw;
   overflow-x: hidden;
-}
 
+}
+label{
+  font-weight: bold;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

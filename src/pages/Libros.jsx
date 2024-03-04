@@ -9,11 +9,13 @@ import {
   Button,
   Label,
   Input,
+  CardFooter,
 } from "reactstrap";
 
 import MultiRangeSlider from "../components/MultiRangeSlider.jsx";
 
 import jsonLibros from "./jsonLibros.json";
+import { Filtro } from "./Filtro.jsx";
 
 export const Libros = () => {
   const [libros, setLibros] = useState([]);
@@ -27,23 +29,23 @@ export const Libros = () => {
     max: 99,
     name: "",
     categorias: [
-      { nombre:"Ficción",valor: true },
-      "Clásicos",
-      "Realismo mágico",
-      "Literatura española",
-      "Distopía",
-      "Literatura inglesa",
-      "Aventura",
-      "Literatura francesa",
-      "Literatura rusa",
-      "Teatro",
-      "Modernismo",
-      "Historia",
-      "Fantasía",
-      "Literatura infantil",
-      "Terror",
-      "Misterio",
-      "Épica",
+      { nombre: "Ficción", valor: true },
+      { nombre: "Clásicos", valor: true },
+      { nombre: "Realismo mágico", valor: true },
+      { nombre: "Literatura española", valor: true },
+      { nombre: "Distopía", valor: true },
+      { nombre: "Literatura inglesa", valor: true },
+      { nombre: "Aventura", valor: true },
+      { nombre: "Literatura francesa", valor: true },
+      { nombre: "Literatura rusa", valor: true },
+      { nombre: "Teatro", valor: true },
+      { nombre: "Modernismo", valor: true },
+      { nombre: "Historia", valor: true },
+      { nombre: "Fantasía", valor: true },
+      { nombre: "Literatura infantil", valor: true },
+      { nombre: "Terror", valor: true },
+      { nombre: "Misterio", valor: true },
+      { nombre: "Épica", valor: true },
     ],
   });
 
@@ -68,66 +70,65 @@ export const Libros = () => {
     }
   };
 
+  const changeCheck = (nombre) => {
+    let lista = filter.categorias;
+
+    lista.map((categoria) => {
+      if (categoria.nombre == nombre) {
+        categoria.valor = !categoria.valor;
+      }
+    });
+
+    setFilter({ ...filter, categorias: lista });
+  };
+
+  const pasaFiltros = (categoriaItem) => {
+    if (filter.name !== "") {
+      if (categoriaItem.titulo !== undefined) {
+        if (
+          !categoriaItem.titulo.toLowerCase().includes(filter.name.toLowerCase())
+        ) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
   return (
     <div className="libros">
-      <div className="libros-left">
-        <div className="filtro">
-          <Label>Nombre</Label>
-          <Input type="text" />
-        </div>
-        <div className="filtro">
-          <Label>{"Min precio: " + filter.min + "€"}</Label>
-          <input
-            min={1}
-            max={99}
-            value={filter.min}
-            onChange={handleChangeRangeMin}
-            type="range"
-          />
-        </div>
-        <div className="filtro">
-          <Label>{"Max precio: " + filter.max + "€"}</Label>
-          <input
-            min={1}
-            max={99}
-            value={filter.max}
-            onChange={handleChangeRangeMax}
-            type="range"
-          />
-        </div>
-        <div className="filtro">
-          <Label>Categorias</Label>
-          <div>
-            <Input type="checkbox" name="ficcion" />
-            <Label check>Ficcion</Label>
-            <Input type="checkbox" />
-            <Label check>Clasicos</Label>
-            <Input type="checkbox" />
-            <Label check>Check me out</Label>
-            <Input type="checkbox" />
-            <Label check>Check me out</Label>
-          
-          </div>
-        </div>
-      </div>
+      <Filtro
+        filter={filter}
+        setFilter={setFilter}
+        handleChangeRangeMin={handleChangeRangeMin}
+        handleChangeRangeMax={handleChangeRangeMax}
+        changeCheck={changeCheck}
+      />
       <div className="libros-center">
-        {libros.map((libro, index) => (
-          <Card
-            style={{
-              maxWidth: "17rem",
-            }}
-          >
-            <img alt="Sample" src="https://picsum.photos/300/200" />
-            <CardBody>
-              <CardTitle tag="h5">{libro.titulo}</CardTitle>
-              <CardSubtitle className="mb-2 text-muted" tag="h6">
-                {libro.precio + " €"}
-              </CardSubtitle>
-              <CardText>{libro.descripcion}</CardText>
-              <Button>Solicitar</Button>
-            </CardBody>
-          </Card>
-        ))}
+        {libros.map(
+          (libro, index) =>
+            pasaFiltros(libro) && (
+              <Card
+                style={
+                  {
+                    //maxWidth: "17rem",
+                  }
+                }
+              >
+                <img alt="Sample" src="https://picsum.photos/300/200" />
+                <CardBody>
+                  <CardTitle tag="h5">{libro.titulo}</CardTitle>
+                  <CardSubtitle className="mb-2 text-muted" tag="h6">
+                    {libro.precio + " €"}
+                  </CardSubtitle>
+                  <CardText>{libro.descripcion}</CardText>
+                </CardBody>
+                <CardFooter>
+                  <Button>Solicitar</Button>
+                </CardFooter>
+              </Card>
+            )
+        )}
       </div>
       <div className="libros-rigth">rigth</div>
     </div>
