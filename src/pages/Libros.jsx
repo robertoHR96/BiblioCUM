@@ -111,7 +111,7 @@ export const Libros = () => {
               <Card
                 style={
                   {
-                    //maxWidth: "17rem",
+                    maxWidth: "496px",
                   }
                 }
               >

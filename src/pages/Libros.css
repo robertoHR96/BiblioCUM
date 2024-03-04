@@ -11,10 +11,10 @@
   column-gap: 20px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 992px) {
   .libros {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 5fr auto;
+    grid-template-rows: auto auto 5fr auto;
     margin-top: 137px;
   }
 }
@@ -23,8 +23,6 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-
-
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -38,12 +36,12 @@
   padding: 10px 10px 10px 20px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 992px) {
   .libros-center > .card {
     max-width: 22rem !important;
   }
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 992px) {
   .libros-center > .card {
     max-width: auto !important;
   }
@@ -59,17 +57,27 @@
   visibility: visible;
   height: calc(100vh - 150px);
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 992px) {
   .no-despl {
-    visibility: hidden;
     animation: noexpand 0.5s forwards;
   }
   @keyframes noexpand {
-    from {
-      height: 545px; /* Altura final */
+    0% {
+      background-color: rgb(243, 243, 243);
+      height: 555px; /* Altura final */
+      padding: 10px;
     }
-    to {
+    25% {
+      visibility: hidden;
+    }
+    50% {
+      padding: 0px;
+      visibility: hidden;
+    }
+    100% {
       height: 0px; /* Altura inicial */
+      visibility: hidden;
+      background-color: white;
     }
   }
   .despl {
@@ -79,9 +87,12 @@
   @keyframes expand {
     from {
       height: 0px; /* Altura inicial */
+      background-color: white;
     }
     to {
-      height: 545px; /* Altura final */
+      height: 555px; /* Altura final */
+      padding: 10px;
+      background-color: rgb(243, 243, 243);
     }
   }
 
@@ -89,7 +100,7 @@
     visibility: visible;
     display: grid;
     grid-template-columns: 1fr;
-    padding:10px 5px;
+    padding: 10px 5px;
   }
 }
 
@@ -107,12 +118,15 @@
 
   padding: 10px;
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 992px) {
   .libros-left > div {
     grid-column: 1/2;
     grid-row: 1/2;
     position: relative;
     height: auto;
+    border: 2px solid rgb(218, 218, 218);
+    background-color: rgb(243, 243, 243);
+    border-radius: 10px;
   }
 }
 .filtro {
