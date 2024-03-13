@@ -7,7 +7,13 @@ const UsuarioContext = createContext();
 export const UsuarioProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem("user");
-    return storedUser ? JSON.parse(storedUser) : { infoGame: [] };
+    return storedUser
+      ? JSON.parse(storedUser)
+      : {
+          tipo: null,
+          imagen: null,
+          reservas: [],
+        };
   });
 
   useEffect(() => {

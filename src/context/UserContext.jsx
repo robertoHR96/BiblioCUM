@@ -4,4 +4,5 @@ import { createContext } from "react";
 export const UserContext = createContext({
     tipo:null,
     imagen:null,
+    reservas: [],
 });

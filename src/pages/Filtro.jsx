@@ -30,7 +30,7 @@ export const Filtro = (props) => {
       <div className={desplegar ? "libros-left despl" : "libros-left no-despl"}>
         <div>
           <div className="filtro">
-            <Label>Nombre</Label>
+            <Label>Nombre / Autor</Label>
             <Input
               type="text"
               value={filter.name}

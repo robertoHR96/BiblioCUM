@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Ah0 from "../assets/Ahorcado0.png";
 import Ah1 from "../assets/Ahorcado1.png";
 import Ah2 from "../assets/Ahorcado2.png";
@@ -15,18 +15,25 @@ import {
   ModalHeader,
 } from "reactstrap";
 
+import axios from "axios";
+
+/**
+ * Componente funcional Ahorcado
+ */
 export const Ahorcado = () => {
-  const intentosTotales = 5;
+  // Número total de intentos permitidos
+  const intentosTotales = 6;
+
+  // Estado para controlar las imágenes del ahorcado
   const [listaImgAh, setListaImgAh] = useState({
     contador: 0,
     imagenes: [Ah6, Ah5, Ah4, Ah3, Ah2, Ah1, Ah0],
   });
-  const [constadorImgAh, setConstadorImgAh] = useState(6);
-  const [intentosJugador, setIntentosJugador] = useState({
-    porJugar: 5,
-    aciertos: 0,
-    fallos: 0,
-  });
+
+  // Estado para controlar los intentos del jugador
+  const [intentosJugador, setIntentosJugador] = useState(intentosTotales);
+
+  // Estado para controlar el abecedario de botones
   const [abecedario, setAbecedario] = useState([
     { letra: "A", estado: 0 },
     { letra: "B", estado: 0 },
@@ -57,93 +64,156 @@ export const Ahorcado = () => {
     { letra: "Z", estado: 0 },
   ]);
 
+  // Estado para controlar los datos del juego (letras de la palabra, pista)
   const [dataGame, setDataGame] = useState({
-    letrasPalabra: [
-      { letra: "C", estado: false },
-      { letra: "A", estado: false },
-      { letra: "S", estado: false },
-      { letra: "A", estado: false },
-    ],
-    pista: "Todos tenemos una...",
+    letrasPalabra: [{ letra: "", estado: false }],
+    pista: "",
   });
 
-  const [terminaJuego, setTerminaJuego] = useState(false);
+  const cargarDiccionario = (response) => {
+    axios
+      .get("https://programacion-cum.unex.es/diccionario.php")
+      .then((response) => {
+        let pista = response.data.Definicion;
+        let letrasPalabras = [];
+        let palabra = response.data.Palabra;
+        for (let i = 0; i < palabra.length; i++) {
+          let letraObjeto = {
+            letra: palabra[i].toUpperCase(),
+            estado: false,
+          };
+          letrasPalabras.push(letraObjeto);
+        }
+        setDataGame({ pista: pista, letrasPalabra: [...letrasPalabras] });
+      })
+      .catch((error) => {
+        // handle error
+      })
+      .finally(() => {
+        // always executed
+      });
+  }
+  useEffect(() => {
+    cargarDiccionario();
+  }, []);
+
+  // Estado para controlar si el jugador gana el juego
   const [ganaJuego, setGanaJuego] = useState(false);
 
-  const comprobarSiFin = () => {
-    let gana = true;
-    dataGame.letrasPalabra.map((letraAbc, index) => {
-      if (letraAbc.estado === false) {
-        gana = false;
-      }
-    });
-    // varibel si gana
-    setGanaJuego(gana);
+  // Estado para controlar si el jugador pierde el juego
+  const [pierdeJuego, setPierdeJuego] = useState(false);
 
-    // si ha gando termina
-    if (gana === true) {
-      setTerminaJuego(true);
-    } else {
-      // sino se comprueba su numeor de intentos
-      if (intentosJugador.porJugar === 0) {
-        setTerminaJuego(true);
-      }
+  /**
+   * Comprueba si el jugado gana la partida y activa el modal de Ganador
+   */
+  const comprobarSiGana = () => {
+    let gana = !dataGame.letrasPalabra.some((letra) => !letra.estado);
+    setGanaJuego(gana);
+  };
+
+  /**
+   * Comprueba si el jugado pierde la partida y activa el modal de Perdedor
+   */
+  const comprobarSiPierde = () => {
+    if (intentosJugador === 0) {
+      setPierdeJuego(true);
     }
   };
 
-  const chageStateLetter = (index) => {
+  /**
+   * Este useEffect sirve para evaluar si puerde el jugador, al restar un intento
+   *     Es llamado en la funcion sumarIntentoFallido
+   */
+  useEffect(() => {
+    comprobarSiPierde();
+  }, [intentosJugador]);
+
+  /**
+   * Esta función aplica los cambios al fallar una letra,
+   * cambia la imagen del ahorcado y resta un intento
+   */
+  const sumarItentoFallido = () => {
+    let contador = listaImgAh.contador + 1;
+    setListaImgAh({ ...listaImgAh, contador: contador });
+    setIntentosJugador(intentosJugador - 1);
+  };
+
+  /**
+   * Esta función actuliza el useState que maneja las letras (botones de juego),
+   * para modificar la letra pulsada
+   * @param {{letra: "", estado: int}} letraButton
+   * @param {int} index
+   */
+  const updateAbecedario = (letraButton, index) => {
+    let copiaAbecedario = [...abecedario];
+    copiaAbecedario[index] = { ...letraButton };
+    setAbecedario([...copiaAbecedario]);
+  };
+
+  /**
+   * Esta función se jecuta al pulsar una letra,
+   * cambia su estado en funcion de si acierta o falla,
+   * y hace llamdas a los cambios
+   * @param {int} index
+   */
+  const comprobarLetra = (index) => {
     let letraButton = abecedario[index];
 
     // se comprueba no se haya puldado antes
     if (letraButton.estado === 0) {
-      letraButton.estado = 1; // se marca como pulsada
-
-      // se busc coincidenica si la hay se marca como good
+      // se marca como fallida por defecto
+      letraButton.estado = 1;
+      // se busca coincidenica si la hay se marca como good
       dataGame.letrasPalabra.map((letraAbc, index) => {
-        console.log(letraAbc.letra, letraButton.letra);
-        if (letraAbc.letra === letraButton.letra) {
+        if (letraAbc.letra.toUpperCase() === letraButton.letra.toUpperCase()) {
           letraAbc.estado = true;
           letraButton.estado = 2;
         }
       });
     }
-    //Se suma el intento
-    let intentosUpdate = intentosJugador;
-    if (letraButton.estado === 2) {
-      intentosUpdate.aciertos = intentosUpdate.aciertos + 1;
-    } else {
-      if (letraButton.estado === 1) {
-        let contador = (listaImgAh.contador + 1)
-        setListaImgAh({...listaImgAh, contador: contador})
-        intentosUpdate.fallos = intentosUpdate.fallos + 1;
-      }
+
+    //Se suma el intento fallido si ha fallado
+    if (letraButton.estado === 1) {
+      sumarItentoFallido();
     }
-    intentosJugador.porJugar = intentosJugador.porJugar - 1;
-    setIntentosJugador({ ...intentosUpdate });
 
     // se reace el vector de letras
-    let copiaAbecedario = [...abecedario];
-    copiaAbecedario[index] = { ...letraButton };
-    setAbecedario([...copiaAbecedario]);
+    updateAbecedario(letraButton, index);
 
     // se comprueba si ha ganado
-    // se comprueba si termina la partida
-    comprobarSiFin();
+    if (pierdeJuego === false) {
+      comprobarSiGana();
+    }
   };
 
-  const reintentar = () => {
-    setTerminaJuego(false);
+  const restableAbacedario = () => {
+    let listaAbecedario = abecedario;
+    abecedario.map((letra) => {
+      letra.estado = 0;
+    });
+    setAbecedario([...listaAbecedario]);
+  }
+  
+  const reiniciar = () => {
+    setPierdeJuego(false);
     setGanaJuego(false);
-  };
-  const siguienteJuego = () => {
-    setTerminaJuego(false);
-    setGanaJuego(false);
+    cargarDiccionario();
+    restableAbacedario();
+    setListaImgAh({
+      contador: 0,
+      imagenes: [Ah6, Ah5, Ah4, Ah3, Ah2, Ah1, Ah0],
+    });
   };
 
   return (
     <>
       <div className="ahorcado">
-        <img src={listaImgAh.imagenes[listaImgAh.contador]}  className="imagen-ahorcado"/>
+        <div className="centrador">
+        <img
+          src={listaImgAh.imagenes[listaImgAh.contador]}
+          className="imagen-ahorcado"
+        />
+        </div>
         <div className="centrador">{dataGame.pista}</div>
         <div className="letras-palabra ">
           {dataGame.letrasPalabra.map((letra, index) =>
@@ -158,7 +228,7 @@ export const Ahorcado = () => {
           {abecedario.map((letra, index) => (
             <div
               className={"letra" + letra.estado}
-              onClick={() => chageStateLetter(index)}
+              onClick={() => comprobarLetra(index)}
             >
               {letra.letra}
             </div>
@@ -166,19 +236,19 @@ export const Ahorcado = () => {
         </div>
       </div>
 
-      <Modal isOpen={terminaJuego && !ganaJuego}>
+      <Modal isOpen={pierdeJuego}>
         <ModalHeader>As perdido...</ModalHeader>
         <ModalBody>Ups... parece que no lo has conseguido...</ModalBody>
         <ModalFooter>
-          <Button onClick={() => reintentar()}>Reintentar</Button>
+          <Button onClick={() => reiniciar()}>Reintentar</Button>
         </ModalFooter>
       </Modal>
 
-      <Modal isOpen={terminaJuego && ganaJuego}>
+      <Modal isOpen={ganaJuego}>
         <ModalHeader>Enorabuena</ModalHeader>
         <ModalBody>Enorabuena has ganado</ModalBody>
         <ModalFooter>
-          <Button onClick={() => siguienteJuego()}>Aceptar</Button>
+          <Button onClick={() => reiniciar()}>Aceptar</Button>
         </ModalFooter>
       </Modal>
     </>

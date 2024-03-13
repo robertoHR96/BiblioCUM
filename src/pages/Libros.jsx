@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import {
   Card,
   CardBody,
@@ -10,14 +9,20 @@ import {
   Label,
   Input,
   CardFooter,
+  ListGroup,
+  ListGroupItem,
+  ListGroupItemText,
+  ListGroupItemHeading,
 } from "reactstrap";
 
 import MultiRangeSlider from "../components/MultiRangeSlider.jsx";
-
+import { useUsuarioContext } from "../context/UsuarioContext";
 import jsonLibros from "./jsonLibros.json";
 import { Filtro } from "./Filtro.jsx";
 
 export const Libros = () => {
+  const { user, loginUser, logoutUser } = useUsuarioContext();
+
   const [libros, setLibros] = useState([]);
 
   useEffect(() => {
@@ -29,16 +34,15 @@ export const Libros = () => {
     max: 99,
     name: "",
     categorias: [
-      { nombre: "Ficción", valor: true },
-      { nombre: "Clásicos", valor: true },
-      { nombre: "Literatura española", valor: true },
-      { nombre: "Distopía", valor: true },
-      { nombre: "Aventura", valor: true },
-      { nombre: "Historia", valor: true },
-      { nombre: "Fantasía", valor: true },
-      { nombre: "Literatura infantil", valor: true },
-      { nombre: "Terror", valor: true },
-      { nombre: "Épica", valor: true },
+      { nombre: "Ficción", valor: false },
+      { nombre: "Clásicos", valor: false },
+      { nombre: "Distopía", valor: false },
+      { nombre: "Aventura", valor: false },
+      { nombre: "Historia", valor: false },
+      { nombre: "Fantasía", valor: false },
+      { nombre: "Literatura infantil", valor: false },
+      { nombre: "Terror", valor: false },
+      { nombre: "Épica", valor: false },
     ],
   });
 
@@ -75,17 +79,60 @@ export const Libros = () => {
     setFilter({ ...filter, categorias: lista });
   };
 
-  const pasaFiltros = (categoriaItem) => {
-    if (filter.name !== "") {
-      if (categoriaItem.titulo !== undefined) {
-        if (
-          !categoriaItem.titulo.toLowerCase().includes(filter.name.toLowerCase())
-        ) {
-          return false;
-        }
+  const hasActiveCategory = () => {
+    let salida = false;
+    filter.categorias.map((cat) => {
+      if (cat.valor == true) {
+        salida = true;
+      }
+    });
+    return salida;
+  };
+  const hasCategoryByName = (nombreCategoria) => {
+    const categoria = filter.categorias.find(
+      (categoria) => categoria.nombre === nombreCategoria
+    );
+    return categoria ? categoria.valor : false;
+  };
+
+  const filtroCheck = (categoriaItem) => {
+    if (hasActiveCategory() == true) {
+      if (hasCategoryByName(categoriaItem.categoria)) {
+        return true;
+      } else {
+        return false;
       }
     }
     return true;
+  };
+
+  const filtroNombreAutor = (categoriaItem) => {
+    if (filter.name !== "" && filter.name !== undefined) {
+      if (categoriaItem.titulo !== undefined) {
+        if (
+          categoriaItem.titulo
+            .toLowerCase()
+            .includes(filter.name.toLowerCase()) ||
+          categoriaItem.autor
+            .toLowerCase()
+            .includes(filter.name.toLocaleLowerCase())
+        ) {
+          return true;
+        }
+      }
+    } else {
+      return true;
+    }
+  };
+
+  const pasaFiltros = (categoriaItem) => {
+    return filtroCheck(categoriaItem) && filtroNombreAutor(categoriaItem);
+  };
+
+  const addReserva = (libro) => {
+    let lista = [...user.reservas];
+    lista.push(libro);
+    loginUser({ ...user, reservas: [...lista] });
   };
 
   return (
@@ -102,28 +149,40 @@ export const Libros = () => {
           (libro, index) =>
             pasaFiltros(libro) && (
               <Card
-                style={
-                  {
-                    maxWidth: "496px",
-                  }
-                }
+                style={{
+                  maxWidth: "496px",
+                }}
               >
-                <img alt="Sample" src="https://picsum.photos/300/200" />
+                <div className="content-img-card">
+                  <div className="img-card">
+                    <img alt="Sample" src={"" + libro.portada} />
+                  </div>
+                </div>
                 <CardBody>
                   <CardTitle tag="h5">{libro.titulo}</CardTitle>
-                  <CardSubtitle className="mb-2 text-muted" tag="h6">
-                    {libro.precio + " €"}
-                  </CardSubtitle>
                   <CardText>{libro.descripcion}</CardText>
+                  <CardText>
+                    {
+                      <p>
+                        <b>Autor:</b>
+                        {" " + libro.autor}
+                      </p>
+                    }
+                  </CardText>
+                  <CardSubtitle className="mb-2 text-muted" tag="h6">
+                    <p>
+                      <b>Precio: </b>
+                      {" " + libro.precio + " €"}
+                    </p>
+                  </CardSubtitle>
                 </CardBody>
                 <CardFooter>
-                  <Button>Solicitar</Button>
+                  <Button onClick={() => addReserva(libro)}>Solicitar</Button>
                 </CardFooter>
               </Card>
             )
         )}
       </div>
-      <div className="libros-rigth">rigth</div>
     </div>
   );
 };

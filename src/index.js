@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AppRouter } from './routers/AppRouter';
+import { UsuarioProvider } from "./context/UsuarioContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <UsuarioProvider>
     <AppRouter>
       <App />
     </AppRouter>
+     </UsuarioProvider>
   </React.StrictMode>
 );
 

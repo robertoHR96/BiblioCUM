@@ -1,6 +1,6 @@
 .libros {
   display: grid;
-  grid-template-columns: 264px 4fr 0.8fr;
+  grid-template-columns: 264px 1fr ;
   justify-content: center;
   align-content: start;
   min-height: 100vh;
@@ -14,7 +14,7 @@
 @media only screen and (max-width: 992px) {
   .libros {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto 5fr auto;
+    grid-template-rows: auto auto 1fr ;
     margin-top: 137px;
   }
 }
@@ -25,9 +25,9 @@
   flex-direction: row;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
 
-  justify-content: center;
+  justify-content: left;
   align-content: start;
 
   column-gap: 20px;
@@ -36,16 +36,43 @@
   padding: 10px 10px 10px 20px;
 }
 
+
 @media only screen and (max-width: 992px) {
-  .libros-center > .card {
-    max-width: 22rem !important;
+  .libros-center {
+  justify-content: center;
+
   }
-}
-@media only screen and (max-width: 992px) {
   .libros-center > .card {
     max-width: auto !important;
   }
 }
+.content-img-card{
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+
+  justify-content: center;
+  align-content: center;
+ 
+
+}
+.img-card {
+  max-width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+  justify-content: center;
+  align-content: center;
+
+}
+.img-card >img{
+  height: 200px;
+  max-width: 100%;
+}
+
+
+
+
+
 .button-desplegar {
   visibility: hidden;
   display: none;
@@ -113,7 +140,7 @@
 
   row-gap: 7px;
 
-  height: calc(100vh - 64px);
+  height: calc(100vh - 70px);
   overflow-y: scroll;
 
   padding: 10px;
