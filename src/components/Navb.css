@@ -5,15 +5,15 @@
 .logo-nav {
   font-size: 1.1em;
   font-weight: bold;
-  font-family: "Roboto", "Courier New", Courier, sans-serif;
-  font-family: "Courier New", Courier, monospace;
   display: grid;
   grid-template-columns: auto auto auto;
   align-content: center;
   grid-template-rows: auto;
+  font-family: "Courier New", Courier, monospace;
 }
 .logo-nav * {
   margin: 0px;
+  font-family: "Courier New", Courier, monospace;
 }
 .logo-nav > .p1 {
   background-color: #00843d;
@@ -33,7 +33,6 @@
 }
 .button-navbar{
   font-size: 1.2em;
-  font-family: "Courier New", Courier, monospace;
   margin-left: 20px;
   color:#5b5b5b;
   cursor: pointer;

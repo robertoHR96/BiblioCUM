@@ -16,22 +16,32 @@ import {
   NavbarText,
 } from "reactstrap";
 import Footer from "../components/Footer";
-import { Ahorcado } from "../pages/Ahorcado";
-import { Libros } from "../pages/Libros";
-import { Novedades } from "../pages/Novedades";
-import { Reservas } from "../pages/Reservas";
+import { Ahorcado } from "../pages/ahorcado/Ahorcado";
+import { Libros } from "../pages/libros/Libros";
+import { Novedades } from "../pages/novedades/Novedades";
+import { Reservas } from "../pages/reservas/Reservas";
+import { BasicRouter } from "./BasicRouter";
+import { Login } from "../pages/users/Login";
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Navb />
       <Routes>
-        <Route path="/" element={ <Ahorcado />} />
-        <Route path="/*" element={ <Ahorcado />} />
+        <Route path="/" element={<Libros />} />
+        <Route path="/*" element={<Libros />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/ahorcado" element={<Ahorcado />} />
-        <Route path="/libros" element={ <Libros />} />
+        <Route path="/libros" element={<Libros />} />
         <Route path="/novedades" element={<Novedades />} />
-        <Route path="/reservas" element={ <Reservas />} />
+        <Route
+          path="/reservas"
+          element={
+            <BasicRouter>
+              <Reservas />
+            </BasicRouter>
+          }
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

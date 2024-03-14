@@ -6,10 +6,11 @@ const UsuarioContext = createContext();
 // Crear el proveedor del contexto
 export const UsuarioProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem("user");
+    const storedUser = sessionStorage.getItem("user");
     return storedUser
       ? JSON.parse(storedUser)
       : {
+          logeado: "noLogin",
           tipo: null,
           imagen: null,
           reservas: [],

@@ -14,7 +14,7 @@
     "titulo": "Cien años de soledad",
     "autor": "Gabriel García Márquez",
     "descripcion": "Una obra maestra del realismo mágico escrita por Gabriel García Márquez, que narra la historia de la familia Buendía a lo largo de varias generaciones.",
-    "precio": "12.50",
+    "precio": "32.50",
     "portada": "https://www.mejoreslibros.top/wp-content/uploads/2020/09/Cien-anos-de-Soledad-50-Aniversario-1141x1536.jpg",
     "disponibles": 15,
     "categoria": "Ficción"
@@ -44,7 +44,7 @@
     "titulo": "Orgullo y prejuicio",
     "autor": "Jane Austen",
     "descripcion": "Una novela clásica de Jane Austen que sigue la vida de la familia Bennet en el siglo XIX y examina las convenciones sociales de la época.",
-    "precio": "11.25",
+    "precio": "91.25",
     "portada": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-loEu1pOpOKc%2FVLaSZTAYEJI%2FAAAAAAAAILE%2FVECEMESu9Cc%2Fs1600%2Funa-imagen-11-portadas-libros-leidos-L-CCtY_E.jpeg&f=1&nofb=1&ipt=0fa596a69c5e26720a7fd9b4abdcd7d43a018e73c067faf91607ab0451d9e4e4&ipo=images",
     "disponibles": 8,
     "categoria": "Clásicos"
@@ -84,7 +84,7 @@
     "titulo": "Hamlet",
     "autor": "William Shakespeare",
     "descripcion": "Una tragedia escrita por William Shakespeare que sigue al príncipe Hamlet mientras busca vengar la muerte de su padre.",
-    "precio": "7.99",
+    "precio": "74.99",
     "portada": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.elsotano.com%2Fimagenes_grandes%2F9786075%2F978607557106.JPG&f=1&nofb=1&ipt=debc75ae7cbc9a2003eea2a4e9a27a79efe06194999b108bc44fc28d685b3109&ipo=images",
     "disponibles": 7,
     "categoria": "Ficción"
@@ -104,7 +104,7 @@
     "titulo": "Guerra y paz",
     "autor": "León Tolstói",
     "descripcion": "Una epopeya histórica de León Tolstói que narra las vidas de varias familias aristocráticas durante la invasión napoleónica de Rusia.",
-    "precio": "18.75",
+    "precio": "8.75",
     "portada": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.isliada.org%2Fstatic%2Fimages%2F2019%2F06%2FGuerra-y-paz-500x759.jpg&f=1&nofb=1&ipt=f8235aecffb3cfa9fb6bb0fdf5db40be477769754e56549e02a2b2c21629de84&ipo=images",
     "disponibles": 14,
     "categoria": "Épica"
@@ -114,7 +114,7 @@
     "titulo": "El señor de los anillos",
     "autor": " J.R.R. Tolkien",
     "descripcion": "Una trilogía de fantasía escrita por J.R.R. Tolkien que sigue la búsqueda de un hobbit llamado Frodo para destruir un poderoso anillo.",
-    "precio": "20.99",
+    "precio": "29.99",
     "portada": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.marcialpons.es%2Fmedia%2Fimg%2Fportadas%2F9788445009598.jpg&f=1&nofb=1&ipt=9e198701a879552bdd7d90305727b855cea6303c947bdb0b46bc5e6e4457e892&ipo=images",
     "disponibles": 20,
     "categoria": "Fantasía"
@@ -124,7 +124,7 @@
     "titulo": "Anna Karenina",
     "autor": "León Tolstói",
     "descripcion": "Una novela de León Tolstói que sigue las relaciones y los dilemas morales de la aristocracia rusa.",
-    "precio": "11.99",
+    "precio": "41.99",
     "portada": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.agapea.com%2Fpoltada-i6n17520076.jpg&f=1&nofb=1&ipt=ecd6c504bd1b2d71e9bf62d9163fb3ed9478d6b7916a6ba60f1ca8b59e705a7e&ipo=images",
     "disponibles": 11,
     "categoria": "Ficción"
@@ -134,7 +134,7 @@
     "titulo": "La Odisea",
     "autor": "Homero",
     "descripcion": "Un poema épico atribuido a Homero que narra el viaje de Odiseo de regreso a casa después de la guerra de Troya.",
-    "precio": "9.25",
+    "precio": "39.25",
     "portada": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.loqueleo.com%2Fbo%2Fuploads%2F2016%2F12%2Fresized%2F800_la-odisea.jpg&f=1&nofb=1&ipt=e9c35df39a205c6eafc620cfd6877ac942c03c0e5712e232e190091756217774&ipo=images",
     "disponibles": 16,
     "categoria": "Épica"
@@ -154,7 +154,7 @@
     "titulo": "Drácula",
     "autor": "Bram Stoker",
     "descripcion": "Una novela de terror gótico escrita por Bram Stoker que sigue al Conde Drácula mientras busca extender su influencia desde Transilvania a Inglaterra.",
-    "precio": "10.50",
+    "precio": "87.50",
     "portada": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.mejoreslibros.top%2Fwp-content%2Fuploads%2F2020%2F10%2FDracula-Bram-Stoker.jpg&f=1&nofb=1&ipt=2f0cd5b958d35fa2702af41bc45bd573fd24724f48bbd46a34b929cf2c882b9b&ipo=images",
     "disponibles": 13,
     "categoria": "Terror"

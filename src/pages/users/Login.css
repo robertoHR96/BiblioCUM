@@ -1,0 +1,33 @@
+.login {
+  margin-top: 60px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: calc( 100vh  - 60px - 60px ) ;
+}
+
+@media only screen and (max-width: 768px) {
+  .login {
+  }
+}
+@media only screen and (max-width: 480px) {
+  .login {
+  }
+}
+
+.content-login {
+  row-gap: 10px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px #bfbfbf;
+}
+.buttons-login {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 10px;
+}
+#feedback-1{
+  max-width: 318px;
+}

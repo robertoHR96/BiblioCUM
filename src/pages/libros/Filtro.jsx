@@ -40,21 +40,23 @@ export const Filtro = (props) => {
           <div className="filtro">
             <Label>{"Min precio: " + filter.min + "€"}</Label>
             <input
-              min={1}
-              max={99}
+              min={0}
+              max={100}
               value={filter.min}
               onChange={handleChangeRangeMin}
               type="range"
+              step={5}
             />
           </div>
           <div className="filtro">
             <Label>{"Max precio: " + filter.max + "€"}</Label>
             <input
-              min={1}
-              max={99}
+              min={0}
+              max={100}
               value={filter.max}
               onChange={handleChangeRangeMax}
               type="range"
+              step={5}
             />
           </div>
           <div className="filtro ">

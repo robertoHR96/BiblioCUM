@@ -15,10 +15,11 @@ import {
   DropdownMenu,
   DropdownItem,
   NavbarText,
+  Button,
 } from "reactstrap";
 
 export const Navb = () => {
-  //const { user, loginUser, logoutUser } = useUsuarioContext();
+  const { user, loginUser, logoutUser } = useUsuarioContext();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -34,21 +35,26 @@ export const Navb = () => {
               <p className="p3">M</p>
             </div>
           </NavbarBrand>
-          <div className="centrador button-navbar"
-          onClick={() => navigate("/libros")}
+          <div
+            className="centrador button-navbar"
+            onClick={() => navigate("/libros")}
           >
             <b>Libros</b>
           </div>
-          <div className="centrador button-navbar"
-          onClick={() => navigate("/novedades")}
+          <div
+            className="centrador button-navbar"
+            onClick={() => navigate("/novedades")}
           >
             <b>Novedades</b>
           </div>
-          <div className="centrador button-navbar"
-          onClick={() => navigate("/reservas")}
-          >
-            <b>Reservas</b>
-          </div>
+          {user.logeado === "login" && (
+            <div
+              className="centrador button-navbar"
+              onClick={() => navigate("/reservas")}
+            >
+              <b>Reservas</b>
+            </div>
+          )}
           <div
             className="centrador button-navbar"
             onClick={() => navigate("/ahorcado")}
@@ -57,11 +63,11 @@ export const Navb = () => {
           </div>
         </Nav>
         <Nav>
-          <NavbarText>
-            <div className="centrador" onClick={() => navigate("/perfil")}>
-              Perfil{" "}
-            </div>
-          </NavbarText>
+          <NavItem>
+            {user.logeado === "noLogin" && (
+              <Button onClick={() => navigate("/Login")} color="success">Login</Button>
+            )}
+          </NavItem>
         </Nav>
       </Navbar>
     </>

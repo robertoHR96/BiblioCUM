@@ -1,0 +1,48 @@
+.novedades {
+  display: grid;
+  justify-content: center;
+  align-content: start;
+  min-height: 100vh;
+  
+}
+.articulos {
+  background-color: white;
+  display: grid;
+  grid-template-columns: minmax(300px ,736px);
+  justify-content: center;
+  align-content: start;
+
+  margin-top: 70px;
+  margin-bottom: 40px;
+}
+
+@media only screen and (max-width: 992px) {
+  .articulos{
+    margin-top: 137px;
+  }
+}
+.articulos h1{
+margin-top: 20px;
+margin-bottom: 20px;
+padding-left: 30px;
+}
+
+.articulo{
+  display: grid;
+  grid-template-columns: 1fr;
+  place-content: center;
+  row-gap: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-top: 1px solid #e0e0e0;
+  padding: 40px 20px 0px;
+}
+.foto img{
+  max-width: 100%;
+  
+}
+.title h5{
+}
+.descripcion p{
+}
+

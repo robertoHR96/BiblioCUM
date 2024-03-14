@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Ah0 from "../assets/Ahorcado0.png";
-import Ah1 from "../assets/Ahorcado1.png";
-import Ah2 from "../assets/Ahorcado2.png";
-import Ah3 from "../assets/Ahorcado3.png";
-import Ah4 from "../assets/Ahorcado4.png";
-import Ah5 from "../assets/Ahorcado5.png";
-import Ah6 from "../assets/Ahorcado6.png";
+import Ah0 from "../../assets/Ahorcado0.png";
+import Ah1 from "../../assets/Ahorcado1.png";
+import Ah2 from "../../assets/Ahorcado2.png";
+import Ah3 from "../../assets/Ahorcado3.png";
+import Ah4 from "../../assets/Ahorcado4.png";
+import Ah5 from "../../assets/Ahorcado5.png";
+import Ah6 from "../../assets/Ahorcado6.png";
 import {
   Button,
   Input,
@@ -209,10 +209,10 @@ export const Ahorcado = () => {
     <>
       <div className="ahorcado">
         <div className="centrador">
-        <img
-          src={listaImgAh.imagenes[listaImgAh.contador]}
-          className="imagen-ahorcado"
-        />
+          <img
+            src={listaImgAh.imagenes[listaImgAh.contador]}
+            className="imagen-ahorcado"
+          />
         </div>
         <div className="centrador">{dataGame.pista}</div>
         <div className="letras-palabra ">
@@ -236,7 +236,7 @@ export const Ahorcado = () => {
         </div>
       </div>
 
-      <Modal isOpen={pierdeJuego}>
+      <Modal isOpen={pierdeJuego} centered={true}>
         <ModalHeader>As perdido...</ModalHeader>
         <ModalBody>Ups... parece que no lo has conseguido...</ModalBody>
         <ModalFooter>
@@ -244,7 +244,7 @@ export const Ahorcado = () => {
         </ModalFooter>
       </Modal>
 
-      <Modal isOpen={ganaJuego}>
+      <Modal isOpen={ganaJuego} centered={true}>
         <ModalHeader>Enorabuena</ModalHeader>
         <ModalBody>Enorabuena has ganado</ModalBody>
         <ModalFooter>
