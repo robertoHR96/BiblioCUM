@@ -17,6 +17,8 @@ Despues ha de instalarse la biblioteca de node_modules, para ello ejecutar el co
 
 Si tiene alguna pregunta o inquietud, no dude en ponerse en contacto con el alumno.
 
+**Enlaze al repositorio del proyecto: ** [https://github.com/robertoHR96/BiblioCUM/]
+
 ## Scripts de instrucciones
 
 En el directorio del proyecto, puede ejecutar:
