@@ -20,6 +20,10 @@
 }
 .descripcion-ahorcado{
   max-width: 500px;
+  padding:10px;
+  border-radius: 5px;
+  border:1px solid #e0e0e0;
+  background-color: white;
 }
 .imagen-ahorcado{
 	width: 400px;
