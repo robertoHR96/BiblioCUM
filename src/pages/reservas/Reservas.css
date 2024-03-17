@@ -1,5 +1,28 @@
+
+
 .reservas{
   display: grid;
-  place-content: center;
   min-height: 100vh;
+  grid-template-columns: 500px;
+  justify-content: center;
+  align-content: start;
+  margin-top: 70px;
+  margin-bottom: 20px;
+  border-radius: 0px;
+}
+.card-reserva-1{
+  border-radius: 0px !important;
+}
+
+.card-reserva{
+  padding: 10px;
+  grid-template-columns: 1fr 3fr;
+}
+.card-reserva .libro-desc{
+    display: -webkit-box; /* establece el modo de visualización */
+  -webkit-box-orient: vertical; /* orientación vertical */
+  -webkit-line-clamp: 2; /* número de líneas que deseas mostrar */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }

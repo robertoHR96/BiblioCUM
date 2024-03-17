@@ -23,15 +23,19 @@ import MultiRangeSlider from "../../components/MultiRangeSlider.jsx";
 import { useUsuarioContext } from "../../context/UsuarioContext.jsx";
 import jsonLibros from "../jsonLibros.json";
 import { Filtro } from "./Filtro.jsx";
+import { useNavigate } from "react-router-dom";
 
 export const Libros = () => {
   const { user, loginUser, logoutUser } = useUsuarioContext();
+  const navigate = useNavigate();
 
   const [libros, setLibros] = useState([]);
 
   const [libroSelecionado, setLibroSelecionado] = useState({});
 
   const [modalAddLibro, setModalAddLibro] = useState(false);
+
+  const [modalNoLogin, setModalNoLogin] = useState(false);
 
   useEffect(() => {
     setLibros(jsonLibros);
@@ -146,8 +150,14 @@ export const Libros = () => {
   };
 
   const abrirModalSeleccionLibro = (libro) => {
-    setLibroSelecionado({ ...libro });
-    setModalAddLibro(true);
+    if (user.logeado === "login") {
+      if (libro.disponibles > 0) {
+        setLibroSelecionado({ ...libro });
+        setModalAddLibro(true);
+      }
+    } else {
+      setModalNoLogin(!modalNoLogin);
+    }
   };
 
   const addReserva = () => {
@@ -196,13 +206,14 @@ export const Libros = () => {
                     </CardText>
                     <CardSubtitle className="mb-2 text-muted" tag="h6">
                       <p>
-                        <b>Precio: </b>
-                        {" " + libro.precio + " €"}
+                        <b>Stock : </b>
+                        {" " + libro.disponibles + " uds"}
                       </p>
                     </CardSubtitle>
                   </CardBody>
                   <CardFooter>
                     <Button
+                      disabled={libro.disponibles <= 0}
                       onClick={() => abrirModalSeleccionLibro(libro)}
                       color="success"
                     >
@@ -214,6 +225,15 @@ export const Libros = () => {
           )}
         </div>
       </div>
+      <Modal isOpen={modalNoLogin} centered={true}>
+            <ModalHeader>Ups...</ModalHeader>
+            <ModalBody>Debes iniciar sesión para poder hacer reservas.</ModalBody>
+        <ModalFooter>
+          <Button onClick={() => setModalNoLogin(!modalNoLogin)}>Cerrar</Button>
+          <Button color="success" onClick={() => navigate("/login")}>Iniciar Sesión</Button>
+            </ModalFooter>
+
+      </Modal>
       <Modal isOpen={modalAddLibro} centered={true}>
         <ModalHeader>{libroSelecionado.titulo}</ModalHeader>
         <ModalBody>
@@ -243,8 +263,8 @@ export const Libros = () => {
               </CardSubtitle>
               <CardSubtitle className="mb-2 text-muted" tag="h6">
                 <p className="sub-text">
-                  <b>Disponibilidad: </b>
-                  {" " + libroSelecionado.disponibles + " und"}
+                  <b>Stock : </b>
+                  {" " + libroSelecionado.disponibles + " uds"}
                 </p>
               </CardSubtitle>
               <CardSubtitle className="mb-2 text-muted" tag="h6">
