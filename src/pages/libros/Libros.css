@@ -15,17 +15,16 @@
   .libros {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
-    margin-top: 80px;
   }
 }
 @media only screen and (max-width: 760px) {
   .libros {
-    margin-top: 100px;
+    margin-top: 130px;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 385px) {
   .libros {
-    margin-top: 120px;
+    margin-top: 160px;
   }
 }
 
@@ -213,4 +212,7 @@
 }
 .sub-text{
   font-size: 0.8em;
+}
+.rdrStartEdge, .rdrInRange, .rdrEndEdge{
+background-color:  #00843d !important;
 }

@@ -29,6 +29,8 @@ export const Ahorcado = () => {
     contador: 0,
     imagenes: [Ah6, Ah5, Ah4, Ah3, Ah2, Ah1, Ah0],
   });
+  const [Acertadas, setAcertadas] = useState(0);
+  const [Puntos, setPuntos] = useState(0);
 
   // Estado para controlar los intentos del jugador
   const [intentosJugador, setIntentosJugador] = useState(intentosTotales);
@@ -108,6 +110,9 @@ export const Ahorcado = () => {
    */
   const comprobarSiGana = () => {
     let gana = !dataGame.letrasPalabra.some((letra) => !letra.estado);
+    if (gana == true) {
+      setAcertadas(Acertadas + 1);
+    }
     setGanaJuego(gana);
   };
 
@@ -116,6 +121,8 @@ export const Ahorcado = () => {
    */
   const comprobarSiPierde = () => {
     if (intentosJugador === 0) {
+      setPuntos(0);
+      setAcertadas(0);
       setPierdeJuego(true);
     }
   };
@@ -168,6 +175,7 @@ export const Ahorcado = () => {
         if (letraAbc.letra.toUpperCase() === letraButton.letra.toUpperCase()) {
           letraAbc.estado = true;
           letraButton.estado = 2;
+          setPuntos((Puntos + 1))
         }
       });
     }
@@ -208,13 +216,27 @@ export const Ahorcado = () => {
   return (
     <>
       <div className="ahorcado">
+        <div className="centrador ahorcado-data">
+          <p>
+            <b>Partidas ganadas:</b>
+            {" " + Acertadas}
+          </p>
+        </div>
+        <div className="centrador ahorcado-data">
+          <p>
+            <b>Puntos:</b>
+            {" " + Puntos}
+          </p>
+        </div>
         <div className="centrador">
           <img
             src={listaImgAh.imagenes[listaImgAh.contador]}
             className="imagen-ahorcado"
           />
         </div>
-        <div className="centrador">{dataGame.pista}</div>
+        <div className="centrador descripcion-ahorcado">
+          {dataGame.pista.toUpperCase()}
+        </div>
         <div className="letras-palabra ">
           {dataGame.letrasPalabra.map((letra, index) =>
             letra.estado === true ? (

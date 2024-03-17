@@ -1,6 +1,10 @@
+.centrador-right {
+  display: grid;
+  justify-content: right;
+  align-content: center;
+}
 
-
-.reservas{
+.reservas {
   display: grid;
   min-height: 100vh;
   grid-template-columns: 500px;
@@ -10,16 +14,49 @@
   margin-bottom: 20px;
   border-radius: 0px;
 }
-.card-reserva-1{
+
+@media only screen and (max-width: 760px) {
+  .reservas {
+    margin-top: 130px;
+  }
+}
+@media only screen and (max-width: 501px) {
+    .reservas{
+      grid-template-columns: 1fr;
+    }
+}
+@media only screen and (max-width: 385px) {
+  .reservas {
+    margin-top: 160px;
+  }
+}
+
+.switch-reservas {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  align-content: center;
+  column-gap: 5px;
+}
+
+.card-reserva-1 {
   border-radius: 0px !important;
 }
 
-.card-reserva{
+.card-reserva {
   padding: 10px;
   grid-template-columns: 1fr 3fr;
 }
-.card-reserva .libro-desc{
-    display: -webkit-box; /* establece el modo de visualización */
+@media only screen and (max-width: 760px) {
+  .card-reserva {
+    grid-template-columns: 1fr;
+  }
+  .card-reserva > div > .img-card > img {
+    width: 100%;
+  }
+}
+.card-reserva .libro-desc {
+  display: -webkit-box; /* establece el modo de visualización */
   -webkit-box-orient: vertical; /* orientación vertical */
   -webkit-line-clamp: 2; /* número de líneas que deseas mostrar */
   overflow: hidden;

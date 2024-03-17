@@ -16,6 +16,10 @@ import {
   DropdownItem,
   NavbarText,
   Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
 } from "reactstrap";
 
 export const Navb = () => {
@@ -23,6 +27,7 @@ export const Navb = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const [modalLogout, setModalLogout] = useState(false);
 
   return (
     <>
@@ -64,12 +69,39 @@ export const Navb = () => {
         </Nav>
         <Nav>
           <NavItem>
-            {user.logeado === "noLogin" && (
-              <Button onClick={() => navigate("/Login")} color="success">Login</Button>
+            {user.logeado === "noLogin" ? (
+              <Button onClick={() => navigate("/Login")} color="success">
+                Login
+              </Button>
+            ) : (
+              <Button color="danger" onClick={() => setModalLogout(true)}>
+                Logout
+              </Button>
             )}
           </NavItem>
         </Nav>
       </Navbar>
+      <Modal isOpen={modalLogout} centered={true}>
+        <ModalHeader>Cerrar Sesión</ModalHeader>
+        <ModalBody>
+          ¿Estás seguro de que deseas cerrar sesión? Al cerrar sesión, se
+          finalizará tu sesión actual y perderas todas tus reservas sin confirmar."
+        </ModalBody>
+        <ModalFooter>
+          <Button color="success" onClick={() => setModalLogout(false)}>
+            Cancelar
+          </Button>
+          <Button
+            color="danger"
+            onClick={() => {
+              setModalLogout(false);
+              logoutUser();
+            }}
+          >
+            Aceptar
+          </Button>
+        </ModalFooter>
+      </Modal>
     </>
   );
 };

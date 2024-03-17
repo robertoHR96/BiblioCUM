@@ -22,6 +22,7 @@ import { Novedades } from "../pages/novedades/Novedades";
 import { Reservas } from "../pages/reservas/Reservas";
 import { BasicRouter } from "./BasicRouter";
 import { Login } from "../pages/users/Login";
+import { Register } from "../pages/users/Register";
 
 export const AppRouter = () => {
   return (
@@ -31,6 +32,7 @@ export const AppRouter = () => {
         <Route path="/" element={<Libros />} />
         <Route path="/*" element={<Libros />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register/>} />
         <Route path="/ahorcado" element={<Ahorcado />} />
         <Route path="/libros" element={<Libros />} />
         <Route path="/novedades" element={<Novedades />} />

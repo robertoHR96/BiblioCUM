@@ -26,7 +26,10 @@ export const UsuarioProvider = ({ children }) => {
   };
 
   const logoutUser = () => {
-    setUser({ infoGame: [] });
+    setUser({
+      infoGame: [],
+      logeado: "noLogin",
+    });
   };
 
   return (

@@ -3,7 +3,7 @@ import { Button, FormFeedback, Input, Tooltip } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { useUsuarioContext } from "../../context/UsuarioContext";
 
-export const Login = () => {
+export const Register = () => {
   const { user, loginUser, logoutUser } = useUsuarioContext();
 
   const [email, setEmail] = useState("");
@@ -11,6 +11,15 @@ export const Login = () => {
 
   const [password, setPassword] = useState("");
   const [passwordValid, setPasswordValid] = useState(false);
+
+  const [passwordRepit, setPasswordRepit] = useState("");
+  const [passwordRepitValid, setPasswordRepitValid] = useState(false);
+
+  const [ciudad, setCiudad] = useState("");
+  const [ciudadValid, setCiudadValid] = useState(false);
+
+  const [numero, setNumero] = useState("");
+  const [numeroValid, setNumeroValid] = useState("");
 
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const toggle = () => setTooltipOpen(!tooltipOpen);
@@ -46,16 +55,41 @@ export const Login = () => {
     // Si la cadena pasa todas las validaciones, retorna true
     return true;
   };
+
+  const isPasswordRepit = () => {
+    return password === password;
+  };
   const validar = () => {
     let v1 = isMail(email);
     setEmailValid(!v1);
     let v2 = isPassword(password);
     setPasswordValid(!v2);
+    let v3 = isPasswordRepit();
+    setPasswordRepit(v3);
+    let v4 = ciudad.length > 0;
+    setCiudadValid(v4);
+    let v5 = numero.length === 9;
+    setNumeroValid(v5);
 
-    if (v1 && v2) {
+    if (v1 && v2 && v3 && v4 && v5) {
       navigate("/libros");
       loginUser({ ...user, logeado: "login" });
     }
+  };
+
+  const onlyNumbers = (event) => {
+    const inputValor = event.target.value;
+
+    // Si el valor ingresado no es un número, no lo actualizamos
+    if (!/^[\d+]*$/.test(inputValor)) {
+      return;
+    }
+
+      if (inputValor.length > 9) {
+          return;
+    }
+    // Actualizar el estado con el valor más "+34" delante
+    setNumero(inputValor);
   };
 
   return (
@@ -78,20 +112,56 @@ export const Login = () => {
         />
         <FormFeedback>
           <p id="feedback-1">
-            <b>
-            Contraseña no valida: 
-            </b>
+            <b>Contraseña no valida:</b>
             {
-            " Contraseña requerida de 8 caracteres alfanuméricos includidas letras mayusculas y minusculas con al menos 1 caracter especial."
+              " Contraseña requerida de 8 caracteres alfanuméricos includidas letras mayusculas y minusculas con al menos 1 caracter especial."
             }
           </p>
         </FormFeedback>
+        <label>Repite contraseña</label>
+        <Input
+          type="password"
+          value={passwordRepit}
+          invalid={passwordRepitValid}
+          onChange={(e) => setPasswordRepit(e.target.value)}
+        />
+        <FormFeedback>
+          <p id="feedback-1">
+            <b>Contraseña no valida:</b>
+            {"Ambas constraseña deben coincidir"}
+          </p>
+        </FormFeedback>
+
+        <label>Ciudad</label>
+        <Input
+          type="text"
+          value={ciudad}
+          invalid={ciudadValid}
+          onChange={(e) => setCiudad(e.target.value)}
+        />
+        <FormFeedback>Este campo no puede estar vacio</FormFeedback>
+        <label>Número de telefono</label>
+
+        <Input
+          type="text"
+          value={numero}
+          invalid={numeroValid}
+          onChange={(e) => onlyNumbers(e)}
+        />
+        <FormFeedback>Debe ser un numero de telefono valido</FormFeedback>
 
         <div className="buttons-login">
           <Button color="success" onClick={() => validar()}>
-            Login
+            Registrarse
           </Button>
-          <Button color="secondary" onClick={() => navigate("/register")}>Registrarse</Button>
+          <Button
+            color="secondary"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Atras
+          </Button>
         </div>
       </div>
     </div>

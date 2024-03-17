@@ -19,11 +19,13 @@ import {
   ModalFooter,
 } from "reactstrap";
 
+import { addDays } from "date-fns";
 import MultiRangeSlider from "../../components/MultiRangeSlider.jsx";
 import { useUsuarioContext } from "../../context/UsuarioContext.jsx";
 import jsonLibros from "../jsonLibros.json";
 import { Filtro } from "./Filtro.jsx";
 import { useNavigate } from "react-router-dom";
+import { ModalSelecionLibro } from "./ModalSelecionLibro.jsx";
 
 export const Libros = () => {
   const { user, loginUser, logoutUser } = useUsuarioContext();
@@ -152,7 +154,16 @@ export const Libros = () => {
   const abrirModalSeleccionLibro = (libro) => {
     if (user.logeado === "login") {
       if (libro.disponibles > 0) {
-        setLibroSelecionado({ ...libro });
+        setLibroSelecionado({
+          ...libro,
+          fecha: [
+            {
+              startDate: new Date(),
+              endDate: addDays(new Date(), 7),
+              key: "selection",
+            },
+          ],
+        });
         setModalAddLibro(true);
       }
     } else {
@@ -160,11 +171,26 @@ export const Libros = () => {
     }
   };
 
+  const getNewID = () => {
+    if (user.reservas.length === 0) {
+      return 1;
+    } else {
+      console.log(user.reservas.length);
+      return user.reservas[user.reservas.length - 1].idReserva + 1;
+    }
+  };
+
   const addReserva = () => {
     let lista = [...user.reservas];
-    lista.push(libroSelecionado);
+    lista.push({
+      ...libroSelecionado,
+      aprovada: false,
+      idReserva: getNewID(),
+      
+    });
     loginUser({ ...user, reservas: [...lista] });
     setModalAddLibro(false);
+    setLibroSelecionado({});
   };
 
   return (
@@ -226,62 +252,24 @@ export const Libros = () => {
         </div>
       </div>
       <Modal isOpen={modalNoLogin} centered={true}>
-            <ModalHeader>Ups...</ModalHeader>
-            <ModalBody>Debes iniciar sesión para poder hacer reservas.</ModalBody>
+        <ModalHeader>Ups...</ModalHeader>
+        <ModalBody>Debes iniciar sesión para poder hacer reservas.</ModalBody>
         <ModalFooter>
           <Button onClick={() => setModalNoLogin(!modalNoLogin)}>Cerrar</Button>
-          <Button color="success" onClick={() => navigate("/login")}>Iniciar Sesión</Button>
-            </ModalFooter>
-
-      </Modal>
-      <Modal isOpen={modalAddLibro} centered={true}>
-        <ModalHeader>{libroSelecionado.titulo}</ModalHeader>
-        <ModalBody>
-          <div className="body-modal-addlibro">
-            <div>
-              <div className="img-card">
-                <img alt="Sample" src={"" + libroSelecionado.portada} />
-              </div>
-            </div>
-            <div>
-              <CardText>
-                <p>{libroSelecionado.descripcion}</p>
-              </CardText>
-              <CardText>
-                {
-                  <p>
-                    <b>Autor:</b>
-                    {" " + libroSelecionado.autor}
-                  </p>
-                }
-              </CardText>
-              <CardSubtitle className="mb-2 text-muted" tag="h6">
-                <p>
-                  <b>Precio: </b>
-                  {" " + libroSelecionado.precio + " €"}
-                </p>
-              </CardSubtitle>
-              <CardSubtitle className="mb-2 text-muted" tag="h6">
-                <p className="sub-text">
-                  <b>Stock : </b>
-                  {" " + libroSelecionado.disponibles + " uds"}
-                </p>
-              </CardSubtitle>
-              <CardSubtitle className="mb-2 text-muted" tag="h6">
-                <p className="sub-text">{"#" + libroSelecionado.categoria}</p>
-              </CardSubtitle>
-            </div>
-          </div>
-        </ModalBody>
-        <ModalFooter>
-          <Button onClick={() => setModalAddLibro(false)} color="danger">
-            Cancelar
-          </Button>
-          <Button onClick={() => addReserva()} color="success">
-            Reservar
+          <Button color="success" onClick={() => navigate("/login")}>
+            Iniciar Sesión
           </Button>
         </ModalFooter>
       </Modal>
+      {modalAddLibro && (
+        <ModalSelecionLibro
+          modalAddLibro={modalAddLibro}
+          setModalAddLibro={setModalAddLibro}
+          libroSelecionado={libroSelecionado}
+          addReserva={addReserva}
+          setLibroSelecionado={setLibroSelecionado}
+        />
+      )}
     </>
   );
 };

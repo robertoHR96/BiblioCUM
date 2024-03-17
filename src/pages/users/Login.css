@@ -21,6 +21,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 20px #bfbfbf;
+  margin: 20px 0px;
 }
 .buttons-login {
   margin-top: 20px;
@@ -31,3 +32,8 @@
 #feedback-1{
   max-width: 318px;
 }
+
+/******************************/
+/******************************/
+
+

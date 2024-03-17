@@ -1,12 +1,31 @@
 .ahorcado {
   display: grid;
-  place-content: center;
+  justify-content: center;
+  align-content: start;
   min-height: 100vh;
+  margin-top: 75px;
+}
+@media only screen and (max-width: 760px) {
+  .ahorcado{
+    margin-top: 135px;
+  }
+}
+@media only screen and (max-width: 385px) {
+  .ahorcado{
+    margin-top: 165px;
+  }
+}
+.ahorcado-data{
+  font-size: 1.2rem;
+}
+.descripcion-ahorcado{
+  max-width: 500px;
 }
 .imagen-ahorcado{
 	width: 400px;
  	aspect-ratio: 1.139;
 }
+
 .letras-ahorcado {
   margin-top: 20px;
   display: grid;
@@ -14,7 +33,28 @@
   grid-template-rows: 40px 40px 40px;
   column-gap: 10px;
   row-gap: 10px;
+  
   justify-content: center;
+}
+@media only screen and (max-width: 760px) {
+  .letras-ahorcado{
+     grid-template-columns: 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+  grid-template-rows: 30px 30px 30px; 
+  column-gap: 8px;
+  row-gap: 8px;
+  }
+  
+}
+@media only screen and (max-width: 400px) {
+.letras-ahorcado {
+  column-gap: 5px;
+  row-gap: 5px;
+}
+.imagen-ahorcado{
+	width: 100vw;
+ 	aspect-ratio: 1.139;
+}
+
 }
 .letras-ahorcado>div>p{
 	margin:0px;
@@ -42,6 +82,7 @@
   cursor: no-drop;
 }
 .letra0 {
+  background-color:white;
   cursor: pointer;
   border: 1px solid gray;
 }
