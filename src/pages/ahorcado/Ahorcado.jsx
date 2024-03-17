@@ -112,6 +112,7 @@ export const Ahorcado = () => {
     let gana = !dataGame.letrasPalabra.some((letra) => !letra.estado);
     if (gana == true) {
       setAcertadas(Acertadas + 1);
+      setIntentosJugador(intentosTotales)
     }
     setGanaJuego(gana);
   };
@@ -123,6 +124,7 @@ export const Ahorcado = () => {
     if (intentosJugador === 0) {
       setPuntos(0);
       setAcertadas(0);
+      setIntentosJugador(intentosTotales)
       setPierdeJuego(true);
     }
   };
