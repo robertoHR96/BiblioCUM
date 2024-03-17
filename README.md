@@ -7,12 +7,12 @@ Este proyecto se inició con [Create React App](https://github.com/facebook/crea
 
 Para asegurarse de que el entorno de desarrollo está correctamente configurado, asegúrese de tener las siguientes versiones instaladas:
 
-- Node.js: v20.11.1 [https://nodejs.org/en)
-- npm: 10.2.4 [https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- Node.js: v20.11.1 : [https://nodejs.org/en]
+- npm: 10.2.4 : [https://docs.npmjs.com/downloading-and-installing-node-js-and-npm]
 
 Si tiene alguna pregunta o inquietud, no dude en ponerse en contacto con el alumno.
 
-## Available Scripts
+## Available Script
 
 En el directorio del proyecto, puede ejecutar:
 
@@ -50,6 +50,14 @@ En su lugar, copiará todos los archivos de configuración y las dependencias tr
 
 No tienes que usar nunca 'expulsar'. El conjunto de características seleccionadas es adecuado para implementaciones pequeñas y medianas, y no debería sentirse obligado a usar esta característica. Sin embargo, entendemos que esta herramienta no sería útil si no pudieras personalizarla cuando estés listo para ello.
 
+## Librerías Utilizadas
+
+Aquí se enumeran las principales librerías utilizadas en este proyecto:
+
+- **React**: Una biblioteca JavaScript para construir interfaces de usuario.
+- **Create React App**: Herramienta oficial de React para iniciar rápidamente proyectos.
+- **MUI UI**: Herramienta para el calendario. [https://mui.com/material-ui/react-switch/]
+- **Reactstrap**: Biblioteca de componentes. [https://reactstrap.github.io/?path=/story/home-installation--page]
 
 ### Deployment
 
