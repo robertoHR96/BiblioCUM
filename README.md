@@ -12,7 +12,7 @@ Para asegurarse de que el entorno de desarrollo está correctamente configurado,
 
 Si tiene alguna pregunta o inquietud, no dude en ponerse en contacto con el alumno.
 
-## Available Script
+## Scripts de instrucciones
 
 En el directorio del proyecto, puede ejecutar:
 
