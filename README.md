@@ -10,6 +10,11 @@ Para asegurarse de que el entorno de desarrollo está correctamente configurado,
 - Node.js: v20.11.1 : [https://nodejs.org/en]
 - npm: 10.2.4 : [https://docs.npmjs.com/downloading-and-installing-node-js-and-npm]
 
+Despues ha de instalarse la biblioteca de node_modules, para ello ejecutar el comando:
+
+    `npm install`
+
+
 Si tiene alguna pregunta o inquietud, no dude en ponerse en contacto con el alumno.
 
 ## Scripts de instrucciones
