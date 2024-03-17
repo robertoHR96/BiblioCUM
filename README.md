@@ -3,7 +3,7 @@
 Este proyecto se inició con [Create React App](https://github.com/facebook/create-react-app).
 
 
-### Instalación
+### Instalación **Importante !!**
 
 Para asegurarse de que el entorno de desarrollo está correctamente configurado, asegúrese de tener las siguientes versiones instaladas:
 
