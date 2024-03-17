@@ -1,12 +1,22 @@
-# Getting Started with Create React App
+# BiblioCUM
 
 Este proyecto se inició con [Create React App](https://github.com/facebook/create-react-app).
+
+
+### Instalación
+
+Para asegurarse de que el entorno de desarrollo está correctamente configurado, asegúrese de tener las siguientes versiones instaladas:
+
+- Node.js: v20.11.1 [https://nodejs.org/en)
+- npm: 10.2.4 [https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
+Si tiene alguna pregunta o inquietud, no dude en ponerse en contacto con el alumno.
 
 ## Available Scripts
 
 En el directorio del proyecto, puede ejecutar:
 
-### `npm start`
+### `npm start` (Recomendado para probar la app)
 
 Ejecuta la aplicación en el modo de desarrollo.\
 Open [http://localhost:3000](http://localhost:3000) para verlo en su navegador.
@@ -19,7 +29,7 @@ También es posible que veas errores de lint en la consola.
 Inicia el ejecutor de pruebas en el modo de inspección interactiva.\
 Consulte la sección sobre [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `npm run build` (Para lanzar a producción)
 
 Compila la aplicación para producción en la carpeta 'build'.\
 Agrupa correctamente React en modo de producción y optimiza la compilación para obtener el mejor rendimiento.
@@ -47,4 +57,4 @@ Esta sección se ha trasladado aquí:[https://facebook.github.io/create-react-ap
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Esta sección se ha trasladado aquí: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
