@@ -12,7 +12,7 @@ Para asegurarse de que el entorno de desarrollo está correctamente configurado,
 
 Despues ha de instalarse la biblioteca de node_modules, para ello ejecutar el comando:
 
-    `npm install`
+`npm install`
 
 
 Si tiene alguna pregunta o inquietud, no dude en ponerse en contacto con el alumno.
